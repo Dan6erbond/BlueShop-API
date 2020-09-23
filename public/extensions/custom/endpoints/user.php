@@ -35,13 +35,9 @@ return [
             ]);
         }
     ],
-    '{id}' => [
+    'me' => [
         'method' => 'GET',
         'handler' => function (Request $request, Response $response, $args) {
-            return $response->withJson([
-                'args' => $args,
-            ]);
-
             $auth_header = $request->getHeader('Authorization');
             if (!$auth_header) {
                 return $response->withStatus(403)->withJson("Schoooo, go away");
@@ -67,9 +63,6 @@ return [
             } else {
                 return $response->withJson([
                     'user' => $user->toArray(),
-                    'class' => get_class($user),
-                    'role' => $user->role,
-                    'email' => $user->email,
                 ]);
             }
         }

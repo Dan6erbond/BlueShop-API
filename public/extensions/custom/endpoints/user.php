@@ -37,7 +37,7 @@ return [
     ],
     'me' => [
         'method' => 'GET',
-        'handler' => function (Request $request, Response $response, $args) {
+        'handler' => function (Request $request, Response $response) {
             $auth_header = $request->getHeader('Authorization');
             if (!$auth_header) {
                 return $response->withStatus(403)->withJson("Schoooo, go away");
